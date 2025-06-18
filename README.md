@@ -1,4 +1,4 @@
-<h1 align="center" id="title">🚀 Coders Blog — Blogging Platform for Developers 🧑‍💻📝</h1>
+<h1 align="center" id="title">🚀 Coders Blog — Blogging Platform for Developers 🧑‍💻</h1>
 
 <p align="center">A blogging platform crafted by a coder, for the coding community. 🚀🧑‍💻</p>
 
