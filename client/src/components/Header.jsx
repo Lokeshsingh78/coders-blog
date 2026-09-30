@@ -1,9 +1,8 @@
 import { Avatar, Dropdown } from 'flowbite-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FiSun, FiMoon, FiMenu, FiX, FiFeather } from 'react-icons/fi';
+import { FiMenu, FiX, FiFeather } from 'react-icons/fi';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../redux/theme/themeSlice';
 import { signoutSuccess } from '../redux/user/userSlice';
 import { useEffect, useState } from 'react';
 
@@ -13,7 +12,6 @@ export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const { theme } = useSelector((state) => state.theme);
   const [searchTerm, setSearchTerm] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -146,19 +144,6 @@ export default function Header() {
               <AiOutlineSearch className='w-5 h-5' />
             </button>
 
-            {/* Theme Toggle Button */}
-            <button
-              type='button'
-              onClick={() => dispatch(toggleTheme())}
-              aria-label='Toggle theme'
-              className='p-2 sm:p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-2xs'
-            >
-              {theme === 'light' ? (
-                <FiMoon className='w-4 h-4 text-slate-700' />
-              ) : (
-                <FiSun className='w-4 h-4 text-amber-400' />
-              )}
-            </button>
 
             {/* User Profile or Sign In Button */}
             {currentUser ? (

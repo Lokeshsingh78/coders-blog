@@ -1,12 +1,15 @@
-import { useSelector } from 'react-redux';
+/* eslint-disable react/prop-types */
+import { useEffect } from 'react';
 
 export default function ThemeProvider({ children }) {
-  const { theme } = useSelector((state) => state.theme);
+  useEffect(() => {
+    // Ensure the document element has no stale dark classes
+    document.documentElement.classList.remove('dark');
+  }, []);
+
   return (
-    <div className={theme}>
-      <div className='bg-slate-50 text-slate-800 dark:text-slate-100 dark:bg-[#0B0F19] min-h-screen transition-colors duration-200'>
-        {children}
-      </div>
+    <div className='bg-slate-50 text-slate-800 min-h-screen'>
+      {children}
     </div>
   );
 }
