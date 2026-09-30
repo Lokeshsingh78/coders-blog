@@ -184,9 +184,18 @@ export default function DashProfile() {
   };
   
   return (
-    <div className='max-w-lg mx-auto p-3 w-full'>
-      <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+    <div className='max-w-xl mx-auto p-4 sm:p-6 w-full'>
+      {/* Profile Header */}
+      <div className='mb-8 pb-6 border-b border-slate-200/80 dark:border-slate-800/80'>
+        <h2 className='text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white'>
+          Account Profile & Security
+        </h2>
+        <p className='text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1'>
+          Manage your credentials, author avatar, and publishing permissions
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         <input
           type='file'
           accept='image/*'
@@ -194,107 +203,159 @@ export default function DashProfile() {
           ref={filePickerRef}
           hidden
         />
-        <div
-          className='relative w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full'
-          onClick={() => filePickerRef.current.click()}
-        >
-          {imageFileUploadProgress && (
-            <CircularProgressbar
-              value={imageFileUploadProgress || 0}
-              text={`${imageFileUploadProgress}%`}
-              strokeWidth={5}
-              styles={{
-                root: {
-                  width: '100%',
-                  height: '100%',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                },
-                path: {
-                  stroke: `rgba(62, 152, 199, ${
-                    imageFileUploadProgress / 100
-                  })`,
-                },
-              }}
+
+        {/* Avatar Upload Area */}
+        <div className='flex flex-col items-center justify-center gap-3 pb-4'>
+          <div
+            className='relative w-28 h-28 cursor-pointer rounded-full overflow-hidden ring-4 ring-indigo-500/20 shadow-md group bg-slate-100 dark:bg-slate-800'
+            onClick={() => filePickerRef.current.click()}
+            title='Click to change profile picture'
+          >
+            {imageFileUploadProgress && (
+              <CircularProgressbar
+                value={imageFileUploadProgress || 0}
+                text={`${imageFileUploadProgress}%`}
+                strokeWidth={5}
+                styles={{
+                  root: {
+                    width: '100%',
+                    height: '100%',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    zIndex: 10,
+                  },
+                  path: {
+                    stroke: `rgba(99, 102, 241, ${imageFileUploadProgress / 100})`,
+                  },
+                }}
+              />
+            )}
+            <img
+              src={imageFileUrl || currentUser.profilePicture || '/author.jpg'}
+              alt={currentUser.username}
+              className={`w-full h-full object-cover transition-opacity duration-200 ${
+                imageFileUploadProgress && imageFileUploadProgress < 100
+                  ? 'opacity-50'
+                  : 'group-hover:opacity-90'
+              }`}
             />
-          )}
-          <img
-            src={imageFileUrl || currentUser.profilePicture}
-            alt='user'
-            className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
-              imageFileUploadProgress &&
-              imageFileUploadProgress < 100 &&
-              'opacity-60'
-            }`}
+            <div className='absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-semibold tracking-wider uppercase text-center px-1'>
+              Change Photo
+            </div>
+          </div>
+          <span className='text-xs text-slate-400'>
+            Click image to upload a new avatar (Max 2MB)
+          </span>
+        </div>
+
+        {imageFileUploadError && (
+          <Alert color='failure' className='rounded-xl text-xs'>
+            {imageFileUploadError}
+          </Alert>
+        )}
+
+        {/* Username Input */}
+        <div>
+          <label className='block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5'>
+            Username
+          </label>
+          <TextInput
+            type='text'
+            id='username'
+            placeholder='username'
+            defaultValue={currentUser.username}
+            onChange={handleChange}
+            className='rounded-xl'
           />
         </div>
-        {imageFileUploadError && (
-          <Alert color='failure'>{imageFileUploadError}</Alert>
-        )}
-        <TextInput
-          type='text'
-          id='username'
-          placeholder='username'
-          defaultValue={currentUser.username}
-          onChange={handleChange}
-        />
-        <TextInput
-          type='email'
-          id='email'
-          placeholder='email'
-          defaultValue={currentUser.email}
-          onChange={handleChange}
-        />
-        <TextInput
-          type='password'
-          id='password'
-          placeholder='password'
-          onChange={handleChange}
-        />
-        <Button
-          type='submit'
-          gradientDuoTone='purpleToBlue'
-          outline
-          disabled={loading || imageFileUploading}
-        >
-          {loading ? 'Loading...' : 'Update'}
-        </Button>
-        {currentUser.isAdmin && (
-          <Link to={'/create-post'}>
-            <Button
-              type='button'
-              gradientDuoTone='purpleToPink'
-              className='w-full'
+
+        {/* Email Input */}
+        <div>
+          <label className='block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5'>
+            Email Address
+          </label>
+          <TextInput
+            type='email'
+            id='email'
+            placeholder='email'
+            defaultValue={currentUser.email}
+            onChange={handleChange}
+            className='rounded-xl'
+          />
+        </div>
+
+        {/* Password Input */}
+        <div>
+          <label className='block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5'>
+            New Password (Leave blank to keep unchanged)
+          </label>
+          <TextInput
+            type='password'
+            id='password'
+            placeholder='••••••••'
+            onChange={handleChange}
+            className='rounded-xl'
+          />
+        </div>
+
+        {/* Actions */}
+        <div className='flex flex-col gap-3 pt-2'>
+          <button
+            type='submit'
+            disabled={loading || imageFileUploading}
+            className='w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-500/20 disabled:opacity-50 transition-all cursor-pointer'
+          >
+            {loading ? 'Saving Changes...' : 'Save Profile Changes'}
+          </button>
+
+          {currentUser.isAdmin && (
+            <Link
+              to='/create-post'
+              className='w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-center text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/80 dark:border-indigo-800/80 hover:bg-indigo-100 transition-colors'
             >
-              Create a post
-            </Button>
-          </Link>
-        )}
+              + Create New Technical Article
+            </Link>
+          )}
+        </div>
       </form>
-      <div className='text-red-500 flex justify-between mt-5'>
-        <span onClick={() => setShowModal(true)} className='cursor-pointer'>
-          Delete Account
-        </span>
-        <span onClick={handleSignout} className='cursor-pointer'>
-          Sign Out
-        </span>
-      </div>
+
+      {/* Status Alerts */}
       {updateUserSuccess && (
-        <Alert color='success' className='mt-5'>
+        <Alert color='success' className='mt-5 rounded-xl text-xs'>
           {updateUserSuccess}
         </Alert>
       )}
       {updateUserError && (
-        <Alert color='failure' className='mt-5'>
+        <Alert color='failure' className='mt-5 rounded-xl text-xs'>
           {updateUserError}
         </Alert>
       )}
       {error && (
-        <Alert color='failure' className='mt-5'>
+        <Alert color='failure' className='mt-5 rounded-xl text-xs'>
           {error}
         </Alert>
       )}
+
+      {/* Account Safety Controls */}
+      <div className='mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-semibold'>
+        <button
+          type='button'
+          onClick={() => setShowModal(true)}
+          className='text-red-500 hover:text-red-600 hover:underline transition-colors'
+        >
+          Delete Account
+        </button>
+        <button
+          type='button'
+          onClick={handleSignout}
+          className='text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors'
+        >
+          Sign Out of Console →
+        </button>
+      </div>
+
+      {/* Confirmation Modal */}
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
@@ -303,17 +364,30 @@ export default function DashProfile() {
       >
         <Modal.Header />
         <Modal.Body>
-          <div className='text-center'>
-            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete your account?
+          <div className='text-center p-2'>
+            <div className='w-14 h-14 rounded-full bg-red-50 dark:bg-red-950/60 text-red-500 flex items-center justify-center mx-auto mb-4 border border-red-200 dark:border-red-900/60'>
+              <HiOutlineExclamationCircle className='w-8 h-8' />
+            </div>
+            <h3 className='mb-2 text-lg font-bold text-slate-900 dark:text-white'>
+              Delete Your Account?
             </h3>
-            <div className='flex justify-center gap-4'>
-              <Button color='failure' onClick={handleDeleteUser}>
-                Yes, I'm sure
+            <p className='text-xs text-slate-500 dark:text-slate-400 mb-6'>
+              This will permanently delete your user profile and privileges. This action cannot be reversed.
+            </p>
+            <div className='flex justify-center gap-3'>
+              <Button
+                color='failure'
+                onClick={handleDeleteUser}
+                className='rounded-xl font-semibold'
+              >
+                Yes, Delete Account
               </Button>
-              <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+              <Button
+                color='gray'
+                onClick={() => setShowModal(false)}
+                className='rounded-xl font-medium'
+              >
+                Cancel
               </Button>
             </div>
           </div>

@@ -31,9 +31,9 @@ export const getposts = async (req, res, next) => {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
     const sortDirection = req.query.order === 'asc' ? 1 : -1;
-    const posts = await Post.find({
+    const filter = {
       ...(req.query.userId && { userId: req.query.userId }),
-      ...(req.query.category && { category: req.query.category }),
+      ...(req.query.category && req.query.category !== 'all' && { category: req.query.category }),
       ...(req.query.slug && { slug: req.query.slug }),
       ...(req.query.postId && { _id: req.query.postId }),
       ...(req.query.searchTerm && {
@@ -42,12 +42,15 @@ export const getposts = async (req, res, next) => {
           { content: { $regex: req.query.searchTerm, $options: 'i' } },
         ],
       }),
-    })
+    };
+
+    const posts = await Post.find(filter)
       .sort({ updatedAt: sortDirection })
       .skip(startIndex)
       .limit(limit);
 
-    const totalPosts = await Post.countDocuments();
+    const totalPosts = await Post.countDocuments(filter);
+    const totalAllPosts = await Post.countDocuments();
 
     const now = new Date();
 
@@ -61,9 +64,17 @@ export const getposts = async (req, res, next) => {
       createdAt: { $gte: oneMonthAgo },
     });
 
+    const totalPages = Math.ceil(totalPosts / limit) || 1;
+    const currentPage = Math.floor(startIndex / limit) + 1;
+
     res.status(200).json({
       posts,
       totalPosts,
+      totalAllPosts,
+      totalPages,
+      currentPage,
+      limit,
+      startIndex,
       lastMonthPosts,
     });
   } catch (error) {

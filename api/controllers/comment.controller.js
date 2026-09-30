@@ -119,7 +119,18 @@ export const getcomments = async (req, res, next) => {
     const lastMonthComments = await Comment.countDocuments({
       createdAt: { $gte: oneMonthAgo },
     });
-    res.status(200).json({ comments, totalComments, lastMonthComments });
+    const totalPages = Math.ceil(totalComments / limit) || 1;
+    const currentPage = Math.floor(startIndex / limit) + 1;
+
+    res.status(200).json({
+      comments,
+      totalComments,
+      totalPages,
+      currentPage,
+      limit,
+      startIndex,
+      lastMonthComments,
+    });
   } catch (error) {
     next(error);
   }

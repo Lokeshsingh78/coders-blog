@@ -109,9 +109,16 @@ export const getUsers = async (req, res, next) => {
       createdAt: { $gte: oneMonthAgo },
     });
 
+    const totalPages = Math.ceil(totalUsers / limit) || 1;
+    const currentPage = Math.floor(startIndex / limit) + 1;
+
     res.status(200).json({
       users: usersWithoutPassword,
       totalUsers,
+      totalPages,
+      currentPage,
+      limit,
+      startIndex,
       lastMonthUsers,
     });
   } catch (error) {

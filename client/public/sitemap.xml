@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Site Routes -->
+  <url>
+    <loc>http://localhost:5173/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/search</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Published Technical Articles -->
+  <url>
+    <loc>http://localhost:5173/post/-sql-in-2025-from-data-rookie-to-database-wizard---the-complete-modern-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/post/mastering-c-systems-programming-in-2025-from-basics-to-advanced-memory-management</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/post/mastering-nextjs-14-building-production-ready-full-stack-web-apps-in-2025</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/post/the-complete-html5-semantic-web-guide-for-2025-boost-your-seo--accessibility</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/post/mastering-python-in-2025-from-complete-beginner-to-advanced-ai--data-mastery</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/post/nodejs-mastery-in-2025-the-definitive-guide-from-beginner-to-production-grade-engineer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/post/the-ultimate-reactjs-mastery-guide-2025-from-core-fundamentals-to-modern-patterns</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/post/the-complete-javascript-mastery-guide-2025-from-core-fundamentals-to-modern-patterns</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

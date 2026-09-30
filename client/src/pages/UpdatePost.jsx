@@ -102,6 +102,21 @@ export default function UpdatePost() {
           </Select>
         </div>
 
+        <TextInput
+          type='text'
+          placeholder='Cover Image URL (optional)'
+          value={formData.image || ''}
+          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+        />
+
+        {formData.image && (
+          <img
+            src={formData.image}
+            alt='Cover Preview'
+            className='h-44 w-full max-w-sm object-cover rounded-xl mt-2 border border-slate-200 dark:border-slate-700'
+          />
+        )}
+
         <ReactQuill
           theme='snow'
           value={formData.content || ''}

@@ -33,6 +33,12 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// MongoDB Compound & Search Indexes for High Performance Querying
+postSchema.index({ category: 1, createdAt: -1 });
+postSchema.index({ createdAt: -1 });
+postSchema.index({ userId: 1, createdAt: -1 });
+postSchema.index({ title: 'text', content: 'text' });
+
 const Post = mongoose.model('Post', postSchema);
 
 export default Post;

@@ -1,0 +1,15 @@
+# Robots.txt for Coder's Blog
+User-agent: *
+Allow: /
+Allow: /post/
+Allow: /search
+Allow: /about
+
+# Disallow private admin / auth endpoints from indexing
+Disallow: /dashboard
+Disallow: /create-post
+Disallow: /update-post/
+Disallow: /sign-in
+Disallow: /sign-up
+
+Sitemap: http://localhost:5173/sitemap.xml

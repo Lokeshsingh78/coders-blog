@@ -5,25 +5,25 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const categoryImageMap = {
-  javascript: 'https://img.icons8.com/?size=512&id=PXTY4q2Sq2lG&format=png',
-  reactjs: 'https://miro.medium.com/v2/resize:fit:700/1*juLLUjz7JM627G788Jpskw.png',
-  nextjs: 'https://wallpapercave.com/wp/wp11846988.png',
-  github: 'https://preview.redd.it/g38817mqb1361.png?auto=webp&s=61f191d6a42b645d77cbbc6ce5d6f08686b6e77a',
-  html: 'https://c4.wallpaperflare.com/wallpaper/453/129/282/html5-hyper-text-markup-language-html-wallpaper-preview.jpg',
-  css: 'https://img.icons8.com/?size=512&id=21278&format=png',
-  python: 'https://c4.wallpaperflare.com/wallpaper/541/218/386/linux-python-programming-wallpaper-preview.jpg',
-  java: 'https://img.icons8.com/?size=512&id=13679&format=png',
-  c: 'https://img-c.udemycdn.com/course/750x422/5786672_2c3f.jpg',
-  cpp: 'https://i.pinimg.com/736x/9b/6e/fe/9b6efe430ed7a89b0f31832b971cf1c6.jpg',
-  php: 'https://kinsta.com/wp-content/uploads/2018/05/what-is-php-3-1.png',
-  sql: 'https://optim.tildacdn.one/tild6238-3035-4335-a333-306335373139/-/resize/824x/-/format/webp/IMG_3349.jpg.webp',
-  typescript: 'https://img.icons8.com/?size=512&id=uJM6fQYqDaZK&format=png',
-  nodejs: 'https://c4.wallpaperflare.com/wallpaper/504/643/616/node-js-javascript-wallpaper-preview.jpg',
-  ruby: 'https://www.liblogo.com/img-logo/ru3040r1e4-ruby-logo-ruby-an-object-oriented-programming-language-for-all-by-jack.png',
-  kotlin: 'https://images.prismic.io/qovery/5fbe059d-281e-4748-8c1b-e4ba3d0ea75c_5e88cdbcbcf6e13c14c276d8_kotlin.jpg?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max',
-  swift: 'https://codeit.us/storage/320/conversions/1_V3CgWE7N1WHwa-9jQjgD5A-main.jpg',
-  go: 'https://i.pinimg.com/736x/ca/14/27/ca1427353346347cb0107ba21e295189.jpg',
-  rust: 'https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/7b/a4/f7/7ba4f7e1-4224-3bb1-e386-5ee382d19828/AppIcon-1x_U007emarketing-0-7-0-0-85-220.png/1200x630wa.png',
+  javascript: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&w=1200&q=80',
+  reactjs: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=80',
+  nextjs: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
+  github: 'https://images.unsplash.com/photo-1618401471353-b98aedd04e11?auto=format&fit=crop&w=1200&q=80',
+  html: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80',
+  css: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80',
+  python: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80',
+  java: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
+  c: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
+  cpp: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
+  php: 'https://images.unsplash.com/photo-1599507593499-a3f7f7d97f66?auto=format&fit=crop&w=1200&q=80',
+  sql: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80',
+  typescript: 'https://images.unsplash.com/photo-1516116211227-bbc0429ce2bf?auto=format&fit=crop&w=1200&q=80',
+  nodejs: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&w=1200&q=80',
+  ruby: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
+  kotlin: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=1200&q=80',
+  swift: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1200&q=80',
+  go: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
+  rust: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
 };
 
 export default function CreatePost() {
@@ -135,11 +135,18 @@ export default function CreatePost() {
           </Select>
         </div>
 
+        <TextInput
+          type="text"
+          placeholder="Custom Cover Image URL (optional)"
+          value={formData.image}
+          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+        />
+
         {formData.image && (
           <img
             src={formData.image}
-            alt="Category Preview"
-            className="h-32 object-contain rounded-lg mt-2"
+            alt="Cover Preview"
+            className="h-44 w-full max-w-sm object-cover rounded-xl mt-2 border border-slate-200 dark:border-slate-700"
           />
         )}
 

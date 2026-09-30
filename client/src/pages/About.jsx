@@ -1,89 +1,162 @@
 import React from 'react';
+import { 
+  HiOutlineShieldCheck,
+  HiOutlineLightningBolt,
+  HiOutlineCheckCircle
+} from 'react-icons/hi';
+import { FaGithub, FaLinkedin, FaTwitter, FaDev } from 'react-icons/fa';
 
 export default function About() {
+  const highlights = [
+    {
+      title: 'High Performance & Pagination',
+      desc: 'Optimized database query pagination with startIndex and limit, sub-second latency, and responsive image containment.',
+      icon: HiOutlineLightningBolt,
+    },
+    {
+      title: 'Secure Authentication & Access Control',
+      desc: 'JWT cookie-based authentication, password hashing with bcrypt, and role-based access control for administrative workflows.',
+      icon: HiOutlineShieldCheck,
+    },
+    {
+      title: 'Editorial Grade Typography',
+      desc: 'Tailored typography system supporting syntax styling, reading progress tracking, responsive tables, and markdown formatting.',
+      icon: HiOutlineCheckCircle,
+    },
+    {
+      title: 'Clean Modular Architecture',
+      desc: 'Separation of concerns across API controllers, route validation, centralized error middleware, and client state management.',
+      icon: HiOutlineCheckCircle,
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center px-4 py-10">
-      <div className="max-w-2xl w-full bg-white dark:bg-gray-800 shadow-2xl rounded-3xl p-8 md:p-12 text-center border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
-        <div className="mb-6">
-          <span className="inline-block text-5xl mb-3 animate-bounce">🚀</span>
-          <h1 className="text-4xl font-extrabold text-gray-800 dark:text-white tracking-tight">
-            About This Blog Project
+    <div className='min-h-screen py-12 sm:py-20'>
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+        {/* Header */}
+        <div className='text-center max-w-2xl mx-auto mb-16'>
+          <span className='inline-flex items-center text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/80 dark:border-indigo-800/60 mb-4'>
+            About The Publication
+          </span>
+          <h1 className='text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight mb-4'>
+            Engineering Architecture & Technical Writing
           </h1>
+          <p className='text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed'>
+            Coder's Blog is an independent technical publication dedicated to sharing practical insights on software engineering, distributed systems, and modern web standards.
+          </p>
         </div>
 
-        <div className="text-md text-gray-700 dark:text-gray-300 flex flex-col gap-6">
-          <p className="bg-blue-50 dark:bg-gray-700 p-4 rounded-xl shadow-sm">
-            Welcome to <span className="font-semibold text-blue-700 dark:text-blue-400">Coder's Blog</span> — a personal full-stack adventure built with heart 💻✨ and a love for learning.
-          </p>
-
-          <div>
-            <p>
-              This platform runs on the mighty <span className="font-semibold">MERN Stack</span>:
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 mt-3">
-              <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-4 py-1 rounded-full font-semibold shadow">MongoDB 🛢️</span>
-              <span className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-1 rounded-full font-semibold shadow">Express.js ⚙️</span>
-              <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-4 py-1 rounded-full font-semibold shadow">React.js ⚛️</span>
-              <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-4 py-1 rounded-full font-semibold shadow">Node.js 🚀</span>
+        {/* Author Profile Card */}
+        <div className='bg-white dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800/90 rounded-3xl p-6 sm:p-10 shadow-sm mb-16'>
+          <div className='flex flex-col sm:flex-row items-center sm:items-start gap-6'>
+            <div className='w-24 h-24 rounded-2xl overflow-hidden shrink-0 ring-4 ring-indigo-500/20 shadow-md bg-slate-100 dark:bg-slate-800'>
+              <img
+                src='/author.jpg'
+                alt='Lokesh Singh Tanwar'
+                className='w-full h-full object-cover object-center'
+              />
+            </div>
+            <div className='flex-1 text-center sm:text-left'>
+              <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3'>
+                <div>
+                  <h2 className='text-2xl font-bold text-slate-900 dark:text-white'>
+                    Lokesh Singh Tanwar
+                  </h2>
+                  <p className='text-sm font-medium text-indigo-600 dark:text-indigo-400'>
+                    Full-Stack Software Engineer & Author
+                  </p>
+                </div>
+                <div className='flex items-center justify-center gap-3'>
+                  <a
+                    href='https://github.com/Lokeshsingh78'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors'
+                    aria-label='GitHub'
+                  >
+                    <FaGithub className='w-4 h-4' />
+                  </a>
+                  <a
+                    href='https://www.linkedin.com/in/lokesh-singh-tanwar/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition-colors'
+                    aria-label='LinkedIn'
+                  >
+                    <FaLinkedin className='w-4 h-4' />
+                  </a>
+                  <a
+                    href='https://dev.to/lokesh_singh'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors'
+                    aria-label='Dev.to'
+                  >
+                    <FaDev className='w-4 h-4' />
+                  </a>
+                  <a
+                    href='https://x.com/Not_LokeshSingh'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-500 transition-colors'
+                    aria-label='Twitter'
+                  >
+                    <FaTwitter className='w-4 h-4' />
+                  </a>
+                </div>
+              </div>
+              <p className='text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4'>
+                Passionate about distributed architectures, high-performance web systems, and crafting responsive, accessible user interfaces. This platform serves as a technical journal documenting practical engineering challenges, architecture decisions, and code benchmarks.
+              </p>
+              <div className='flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800'>
+                <span className='inline-flex items-center gap-1.5'>
+                  <HiOutlineCheckCircle className='w-4 h-4 text-emerald-500' />
+                  <span>Production Full-Stack Architecture</span>
+                </span>
+                <span className='inline-flex items-center gap-1.5'>
+                  <HiOutlineCheckCircle className='w-4 h-4 text-emerald-500' />
+                  <span>REST API Design & Security</span>
+                </span>
+                <span className='inline-flex items-center gap-1.5'>
+                  <HiOutlineCheckCircle className='w-4 h-4 text-emerald-500' />
+                  <span>Custom Design System</span>
+                </span>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div className="flex flex-col gap-2">
-            <p className="font-medium">It features:</p>
-            <div className="grid grid-cols-2 gap-3 text-sm">
-              <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded-lg flex items-center justify-center shadow-sm">🔐 <span className="font-medium ml-2">Firebase Auth</span></div>
-              <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded-lg flex items-center justify-center shadow-sm">✍️ <span className="font-medium ml-2">Post Editor</span></div>
-              <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded-lg flex items-center justify-center shadow-sm">💬 <span className="font-medium ml-2">Comments</span></div>
-              <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded-lg flex items-center justify-center shadow-sm">👍 <span className="font-medium ml-2">Likes</span></div>
-            </div>
-            <span>
-              — all wrapped in a sleek, responsive UI powered by <span className="font-semibold">Tailwind CSS</span> 🎨.
-            </span>
+        {/* Engineering Highlights */}
+        <div>
+          <div className='text-center sm:text-left mb-8'>
+            <h2 className='text-2xl font-bold text-slate-900 dark:text-white'>
+              Platform Architectural Features
+            </h2>
+            <p className='text-sm text-slate-500 dark:text-slate-400 mt-1'>
+              Core engineering design principles focused on stability, performance, and readability.
+            </p>
           </div>
 
-          <p>
-            This blog isn't just a project — it's my digital notebook. A space to build, break, learn, and share real-world development knowledge 🌍✨.
-          </p>
-
-          <p>
-            Dive in, drop a comment, or check out the source on{" "}
-            <a
-              href="https://github.com/Lokeshsingh78"
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline transition-colors font-semibold"
-            >
-              GitHub
-            </a>
-            .
-          </p>
-
-          <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
-            <p className="italic text-sm text-gray-500 dark:text-gray-400">
-              "Code with purpose 💻. Share with heart ❤️. Grow with community 🌱."
-            </p>
-            <p className="text-sm font-medium mt-2 text-gray-600 dark:text-gray-300">
-              — Lokesh Singh Tanwar
-            </p>
-            <div className="flex justify-center gap-4 mt-3 text-sm">
-              <a
-                href="https://dev.to/lokesh_singh"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors flex items-center font-medium"
-              >
-                📝 Dev.to
-              </a>
-              <span className="text-gray-300 dark:text-gray-600">|</span>
-              <a
-                href="https://x.com/Not_LokeshSingh"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors flex items-center font-medium"
-              >
-                🐦 X (Twitter)
-              </a>
-            </div>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+            {highlights.map((feat) => {
+              const Icon = feat.icon;
+              return (
+                <div
+                  key={feat.title}
+                  className='p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 shadow-2xs'
+                >
+                  <div className='w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4'>
+                    <Icon className='w-5 h-5' />
+                  </div>
+                  <h3 className='text-base font-bold text-slate-900 dark:text-white mb-2'>
+                    {feat.title}
+                  </h3>
+                  <p className='text-sm text-slate-600 dark:text-slate-400 leading-relaxed'>
+                    {feat.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

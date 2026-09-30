@@ -29,9 +29,19 @@ mongoose
 app.use(express.json());
 app.use(cookieParser());
 
-// Enable CORS
+// Enable CORS for Localhost, Render, and Vercel Deployments
 app.use(cors({
-  origin: 'http://localhost:5173', // You can change this for production
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (
+      origin.includes('localhost') ||
+      origin.endsWith('.vercel.app') ||
+      origin.includes('onrender.com')
+    ) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
   credentials: true,
 }));
 
