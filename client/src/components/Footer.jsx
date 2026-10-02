@@ -13,15 +13,8 @@ export default function Footer() {
           <div className='md:col-span-2'>
             <Link
               to="/"
-              className="group inline-flex items-center gap-2.5 focus:outline-none mb-4 select-none"
+              className="group inline-flex items-center focus:outline-none mb-4 select-none"
             >
-              <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 via-purple-500 to-pink-500 p-[1.5px] shadow-xs">
-                <div className="w-full h-full bg-white dark:bg-[#0B0F19] rounded-[6.5px] flex items-center justify-center">
-                  <span className="font-mono font-black text-xs bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                    &lt;/&gt;
-                  </span>
-                </div>
-              </div>
               <div className="flex items-baseline">
                 <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white font-sans">
                   Coder's

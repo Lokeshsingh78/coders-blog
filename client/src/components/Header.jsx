@@ -61,18 +61,9 @@ export default function Header() {
           {/* Brand Logo */}
           <Link
             to="/"
-            className="group flex items-center gap-3 focus:outline-none py-1 select-none shrink-0"
+            className="group flex items-center focus:outline-none py-1 select-none shrink-0"
             aria-label="Coder's Blog Homepage"
           >
-            {/* Modern Tech Emblem */}
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-purple-500 to-pink-500 p-[2px] shadow-sm shadow-purple-500/20 group-hover:shadow-md group-hover:shadow-purple-500/30 group-hover:scale-105 transition-all duration-300">
-              <div className="w-full h-full bg-white dark:bg-[#0B0F19] rounded-[10px] flex items-center justify-center transition-colors">
-                <span className="font-mono font-black text-sm bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-tighter">
-                  &lt;/&gt;
-                </span>
-              </div>
-            </div>
-
             {/* Typography */}
             <div className="flex items-baseline">
               <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white font-sans">
@@ -81,7 +72,6 @@ export default function Header() {
               <span className="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 bg-clip-text text-transparent ml-1.5">
                 Blog
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 ml-1 group-hover:scale-125 transition-transform duration-200"></span>
             </div>
           </Link>
 

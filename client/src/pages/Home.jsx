@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <div className='min-h-screen'>
       {/* Hero Header Section */}
-      <section className='border-b border-slate-200/80 dark:border-slate-800/80 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/40 dark:from-[#0B0F19] dark:via-slate-900/40 dark:to-[#0B0F19] py-16 sm:py-24 transition-colors'>
+      <section className='border-b border-slate-200/80 dark:border-slate-800/80 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/40 dark:from-[#0B0F19] dark:via-slate-900/40 dark:to-[#0B0F19] pt-8 pb-16 sm:pb-24 transition-colors'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='max-w-3xl'>
             <div className='inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/50 mb-6'>
